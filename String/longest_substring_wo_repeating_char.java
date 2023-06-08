@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
+// https://leetcode.com/problems/longest-substring-without-repeating-characters
 class Solution {
     public int lengthOfLongestSubstring(String s) {
         int max = 0, count = 0, left=0;

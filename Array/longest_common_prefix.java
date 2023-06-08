@@ -1,4 +1,4 @@
-//https://leetcode.com/problems/longest-common-prefix/solutions/3273176/python3-c-java-19-ms-beats-99-91/
+//https://leetcode.com/problems/longest-common-prefix
 class Solution {
     public String longestCommonPrefix(String[] strs) {
         Arrays.sort(strs);
