@@ -1,7 +1,8 @@
 // https://leetcode.com/problems/roman-to-integer/
 class Solution {
     public int romanToInt(String s) {
-        HashMap<Character,Integer> map = new HashMap<>();
+        int sum=0;
+        HashMap<Character,Integer> map=new HashMap<>();
         map.put('I',1);
         map.put('V',5);
         map.put('X',10);
@@ -10,44 +11,14 @@ class Solution {
         map.put('D',500);
         map.put('M',1000);
 
-        int sum = 0,len=s.length();
-        for(int i=0;i<len;i++){
-            char c = s.charAt(i); 
-            if(i!=len-1){
-                char next = s.charAt(i+1);
-                if(c=='I'){
-                    if(next=='V'){
-                        sum += 4;
-                        i++;
-                        continue;
-                    }else if(next=='X'){
-                        sum += 9;
-                        i++;
-                        continue;
-                    }
-                }else if(c=='X'){
-                    if(next=='L'){
-                        sum += 40;
-                        i++;
-                        continue;
-                    }else if(next=='C'){
-                        sum += 90;
-                        i++;
-                        continue;
-                    }
-                }else if(c=='C'){
-                    if(next=='D'){
-                        sum += 400;
-                        i++;
-                        continue;
-                    }else if(next=='M'){
-                        sum += 900;
-                        i++;
-                        continue;
-                    }
-                }
+        int prev = map.get(s.charAt(0));
+        for(int i=0;i<s.length();i++){
+            int curr = map.get(s.charAt(i));
+            if(prev<curr){
+                sum-=2*prev;
             }
-            sum+=map.get(c);
+            sum+=curr;
+            prev=curr;
         }
         return sum;
     }
