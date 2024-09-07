@@ -1,13 +1,12 @@
 // https://leetcode.com/problems/remove-duplicates-from-sorted-array/
 class Solution {
     public int removeDuplicates(int[] nums) {
-        int k=0;
-        for(int i=0;i<nums.length;i++){
-            boolean isPresent = false;
-            for(int j=0;j<k;j++){
-                if(nums[i]==nums[j]) isPresent = true;
-            }
-            if(!isPresent) nums[k++]=nums[i];
+        int k=1;
+        for(int i=1;i<nums.length;i++){
+           if(nums[i] != nums[i-1]){
+                nums[k]=nums[i];
+                k++;
+           }
         }
         return k++;
     }
@@ -30,4 +29,7 @@ Missed Cases:-
 Attempt 2: 
     1. Will loop through array once only with 2 pointers
     2. Implemented the HashSet logic using array
+
+Attempt 3:
+    1. Didn't focus on the fact that array is already sorted
 */
