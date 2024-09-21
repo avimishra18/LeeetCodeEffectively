@@ -1,16 +1,26 @@
 // https://leetcode.com/problems/rotate-array/
 class Solution {
-  public void rotate(int[] nums, int k) {
-      int[] temp=Arrays.copyOf(nums, nums.length);
-      for(int i=0;i<temp.length;i++){
-          nums[(i+k)%nums.length]=temp[i];
-      }
-      return;
-  }
+
+    private void reverse(int[] nums, int start, int end){
+        for(int i=start,j=end;i<j;i++,j--){
+            int temp=nums[i];
+            nums[i]=nums[j];
+            nums[j]=temp;
+        }
+    }
+
+    public void rotate(int[] nums, int k) {
+       int _k=k%nums.length, n=nums.length-1;
+       if(n==0) return;
+       reverse(nums,0,n-_k);
+       reverse(nums,n-_k+1,n);
+       reverse(nums,0,n);
+    }
 }
 /*
 Problems:-
-  1. right shift array by k positions
+    1. right shift array by k positions
 Solution:-
-  1. by brute force copy elements into another array
+    1. by brute force copy elements into another array
+    2. Optimized: reverse array
 */
